@@ -1,0 +1,11 @@
+{
+    "SearchResults": "SearchResults",
+    "Error": "Error",
+    "Wait": "Wait",
+    "NoResults": "NoResults",
+    "AnimeInfoLocales": {
+        "Score": "Score",
+        "Status": "Status",
+        "Genres": "Genres"
+    }
+}
