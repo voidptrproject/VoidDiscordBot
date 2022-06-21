@@ -23,7 +23,7 @@ namespace VoidBot
         public static async Task Initialize()
         {
             CurrentLocalization = Config.Current!.Localization;
-            Current = JsonConvert.DeserializeObject<Localization>(await File.ReadAllTextAsync($"Locales\\{Config.Current?.Localization}.json"));
+            Current = JsonConvert.DeserializeObject<Localization>(await File.ReadAllTextAsync($"Locales/{Config.Current?.Localization}.json"));
 
             var watcher = new FileSystemWatcher("Locales");
             watcher.Filter = $"{Config.Current?.Localization}";
@@ -31,13 +31,13 @@ namespace VoidBot
             watcher.EnableRaisingEvents = true;
             watcher.Changed += async (sender, e) =>
             {
-                Current = JsonConvert.DeserializeObject<Localization>(await File.ReadAllTextAsync($"Locales\\{Config.Current?.Localization}.json"));
+                Current = JsonConvert.DeserializeObject<Localization>(await File.ReadAllTextAsync($"Locales/{Config.Current?.Localization}.json"));
             };
 
             Config.OnConfigChanged += async (sender, config) =>
             {
                 CurrentLocalization = config.Localization;
-                Current = JsonConvert.DeserializeObject<Localization>(await File.ReadAllTextAsync($"Locales\\{config.Localization}.json"));
+                Current = JsonConvert.DeserializeObject<Localization>(await File.ReadAllTextAsync($"Locales/{config.Localization}.json"));
             };
         }
     }

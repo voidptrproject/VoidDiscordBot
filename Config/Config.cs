@@ -13,7 +13,7 @@ namespace VoidBot
 
         public static async Task Initialize()
         {
-            Current = JsonConvert.DeserializeObject<Config>(await File.ReadAllTextAsync("Config\\config.json"));
+            Current = JsonConvert.DeserializeObject<Config>(await File.ReadAllTextAsync("Config/config.json"));
 
             var watcher = new FileSystemWatcher("Config");
             watcher.Filter = "config.json";
@@ -21,7 +21,7 @@ namespace VoidBot
             watcher.EnableRaisingEvents = true;
             watcher.Changed += async (sender, e) =>
             {
-                Current = JsonConvert.DeserializeObject<Config>(await File.ReadAllTextAsync("Config\\config.json"));
+                Current = JsonConvert.DeserializeObject<Config>(await File.ReadAllTextAsync("Config/config.json"));
                 OnConfigChanged?.Invoke(null, Current!);
             };
         }
