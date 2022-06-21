@@ -31,7 +31,9 @@ async Task Main()
     });
 
     commands.RegisterCommands<VoidBot.Modules.AnimeModule>();
-    commands.RegisterCommands<VoidBot.Modules.MusicModule>();
+
+    // TODO: FIX THIS
+    //commands.RegisterCommands<VoidBot.Modules.MusicModule>();
 
     commands.CommandErrored += async (cmd, e) =>
     {
