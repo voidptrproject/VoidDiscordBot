@@ -8,7 +8,7 @@ namespace VoidBot.Modules
     [Description("Anime Module"), Group("anime")]
     public class AnimeModule : DSharpPlus.CommandsNext.BaseCommandModule
     {
-        [Description("Get info about anime"), Command("anime_info"), Cooldown(1, 5, CooldownBucketType.User)]
+        [Description("Get info about anime"), Command("info"), Cooldown(1, 5, CooldownBucketType.User)]
         async Task AnimeInfo(CommandContext ctx, [Description("Anime name"), RemainingText, NotNull] string anime)
         {
             var wait = await Utils.ChatUtils.SendWait(ctx);
@@ -24,7 +24,7 @@ namespace VoidBot.Modules
             }
         }
 
-        [Description("Get info about anime using id"), Command("anime_info_id"), Cooldown(1, 5, CooldownBucketType.User)]
+        [Description("Get info about anime using id"), Command("info_id"), Cooldown(1, 5, CooldownBucketType.User)]
         async Task AnimeInfoById(CommandContext ctx, [Description("Anime id")] int animeId)
         {
             var wait = await Utils.ChatUtils.SendWait(ctx);
@@ -40,7 +40,7 @@ namespace VoidBot.Modules
             }
         }
 
-        [Description("Search for anime"), Command("anime_search"), Cooldown(1, 5, CooldownBucketType.User)]
+        [Description("Search for anime"), Command("search"), Cooldown(1, 5, CooldownBucketType.User)]
         async Task AnimeSearch(CommandContext ctx, 
             [Description("Anime count to output")] int num,
             [RemainingText, Description("Anime name")] string? animeName)
