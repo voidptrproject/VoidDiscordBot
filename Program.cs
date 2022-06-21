@@ -33,6 +33,14 @@ async Task Main()
     commands.RegisterCommands<VoidBot.Modules.AnimeModule>();
     commands.RegisterCommands<VoidBot.Modules.MusicModule>();
 
+    commands.CommandErrored += async (cmd, e) =>
+    {
+        if (cmd == null)
+            await VoidBot.Utils.ChatUtils.SendError(e.Context, e.Exception.Message);
+        else
+            await VoidBot.Utils.ChatUtils.SendError(e.Context, $"{e.Command.QualifiedName} - {e.Exception.Message}\n{e.Exception.StackTrace}");
+    };
+
     await client.ConnectAsync();
 
     await Task.Delay(Timeout.Infinite);

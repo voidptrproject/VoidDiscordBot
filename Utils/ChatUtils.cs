@@ -22,5 +22,10 @@ namespace VoidBot.Utils
         {
             return await ctx.RespondAsync(new DiscordEmbedBuilder().WithTitle(Localization.Current?.Wait!).WithColor(DiscordColor.Azure));
         }
+
+        public static async Task SendMessage(CommandContext ctx, string message)
+        {
+            await ctx.RespondAsync(new DiscordEmbedBuilder().WithDescription(message).WithColor(DiscordColor.Gold));
+        }
     }
 }
