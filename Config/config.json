@@ -1,5 +1,5 @@
 {
     "TokenEnvermomentName": "VoidDiscordBotToken",
     "Localization": "en",
-    "Prefixes": ["v.", "void."]
+    "Prefixes": ["/"]
 }

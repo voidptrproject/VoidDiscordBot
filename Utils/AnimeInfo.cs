@@ -19,7 +19,7 @@ namespace VoidBot.Utils
         private static readonly Uri ShikimoriUri = new Uri("https://shikimori.one/");
         private static readonly HttpClient Web = new() { Timeout = TimeSpan.FromSeconds(5) };
 
-        public static async Task<Anime?> GetAnime(int id)
+        public static async Task<Anime?> GetAnime(long id)
         {
             var animeResponse = await Web.GetAsync(ShikimoriApiUri + $"animes/{id}");
             if (!animeResponse.IsSuccessStatusCode)
@@ -27,7 +27,7 @@ namespace VoidBot.Utils
             return JsonConvert.DeserializeObject<Anime>(await animeResponse.Content.ReadAsStringAsync());
         }
 
-        public static async Task<List<Anime?>> FindAnimesByName(string name, int numToFind = 10)
+        public static async Task<List<Anime?>> FindAnimesByName(string name, long numToFind = 10)
         {
             var animes = new List<Anime?>();
 

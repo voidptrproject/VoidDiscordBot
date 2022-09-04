@@ -1,5 +1,6 @@
 ﻿using DSharpPlus.CommandsNext;
 using DSharpPlus.VoiceNext;
+using DSharpPlus.SlashCommands;
 
 async Task Main()
 {
@@ -25,22 +26,19 @@ async Task Main()
 
     client.UseVoiceNext();
 
-    var commands = client.UseCommandsNext(new CommandsNextConfiguration
-    {
-        StringPrefixes = VoidBot.Config.Current!.Prefixes!
-    });
+    var commands = client.UseSlashCommands();
 
     commands.RegisterCommands<VoidBot.Modules.AnimeModule>();
 
     // TODO: FIX THIS
     //commands.RegisterCommands<VoidBot.Modules.MusicModule>();
 
-    commands.CommandErrored += async (cmd, e) =>
+    commands.SlashCommandErrored += async (cmd, e) =>
     {
         if (cmd == null)
             await VoidBot.Utils.ChatUtils.SendError(e.Context, e.Exception.Message);
         else
-            await VoidBot.Utils.ChatUtils.SendError(e.Context, $"{e.Command.QualifiedName} - {e.Exception.Message}\n{e.Exception.StackTrace}");
+            await VoidBot.Utils.ChatUtils.SendError(e.Context, $"{e.Context.CommandName} - {e.Exception.Message}\n{e.Exception.StackTrace}");
     };
 
     await client.ConnectAsync();
